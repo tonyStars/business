@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysCompanyBankMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysCompanyBank">
+        <id column="BANK_ID" property="bankId" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="BANK_NAME" property="bankName" />
+        <result column="BANK_INFO" property="bankInfo" />
+        <result column="ACCOUNT" property="account" />
+        <result column="ACCOUNT_NAME" property="accountName" />
+        <result column="TAXNO" property="taxno" />
+        <result column="ADDRESS" property="address" />
+        <result column="NOTE" property="note" />
+        <result column="STATUS" property="status" />
+        <result column="ENTRY_USER_ID" property="entryUserId" />
+        <result column="ENTRY_USER_NAME" property="entryUserName" />
+        <result column="ENTRY_USER_TIME" property="entryUserTime" />
+        <result column="UPDATE_USER_ID" property="updateUserId" />
+        <result column="UPDATE_USER_NAME" property="updateUserName" />
+        <result column="UPDATE_USER_TIME" property="updateUserTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        BANK_ID, COMPANY_ID, BANK_NAME, BANK_INFO, ACCOUNT, ACCOUNT_NAME, TAXNO, ADDRESS, NOTE, STATUS, ENTRY_USER_ID, ENTRY_USER_NAME, ENTRY_USER_TIME, UPDATE_USER_ID, UPDATE_USER_NAME, UPDATE_USER_TIME
+    </sql>
+
+</mapper>

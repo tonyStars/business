@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysUser">
+        <id column="USER_ID" property="userId" />
+        <result column="USER_CODE" property="userCode" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_DUTY" property="userDuty" />
+        <result column="PASSWORD" property="password" />
+        <result column="ID_CARD" property="idCard" />
+        <result column="PHONE" property="phone" />
+        <result column="IMG_URL" property="imgUrl" />
+        <result column="SEX" property="sex" />
+        <result column="TYPE" property="type" />
+        <result column="NOTE" property="note" />
+        <result column="STATUS" property="status" />
+        <result column="COMPANY_ID" property="companyId" />
+        <result column="ENTRY_USER_ID" property="entryUserId" />
+        <result column="ENTRY_USER_NAME" property="entryUserName" />
+        <result column="ENTRY_USER_TIME" property="entryUserTime" />
+        <result column="UPDATE_USER_ID" property="updateUserId" />
+        <result column="UPDATE_USER_NAME" property="updateUserName" />
+        <result column="UPDATE_USER_TIME" property="updateUserTime" />
+
+        <result column="COMPANY_NAME" property="companyName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        USER_ID, USER_CODE, USER_NAME, USER_DUTY, PASSWORD, ID_CARD, PHONE, IMG_URL, SEX, TYPE, NOTE, STATUS, COMPANY_ID, ENTRY_USER_ID, ENTRY_USER_NAME, ENTRY_USER_TIME, UPDATE_USER_ID, UPDATE_USER_NAME, UPDATE_USER_TIME
+    </sql>
+
+    <select id="getModelById" resultMap="BaseResultMap">
+        SELECT
+            u.USER_ID,
+            u.USER_CODE,
+            u.USER_NAME,
+            u.USER_DUTY,
+            u.PASSWORD,
+            u.ID_CARD,
+            u.PHONE,
+            u.IMG_URL,
+            u.SEX,
+            u.TYPE,
+            u.NOTE,
+            u.STATUS,
+            u.COMPANY_ID,
+            u.ENTRY_USER_ID,
+            u.ENTRY_USER_NAME,
+            u.ENTRY_USER_TIME,
+            u.UPDATE_USER_ID,
+            u.UPDATE_USER_NAME,
+            u.UPDATE_USER_TIME,
+            c.COMPANY_NAME
+        FROM
+            sys_user u
+        LEFT JOIN sys_company c ON u.COMPANY_ID = c.COMPANY_ID
+        WHERE
+            1 = 1
+            <if test="id != null">
+                AND u.USER_ID = #{id}
+            </if>
+    </select>
+
+    <!--导出Excel-->
+    <select id="selectExportList" resultMap="BaseResultMap">
+        SELECT
+            u.USER_ID,
+            u.USER_CODE,
+            u.USER_NAME,
+            u.USER_DUTY,
+            u.PASSWORD,
+            u.ID_CARD,
+            u.PHONE,
+            u.IMG_URL,
+            u.SEX,
+            u.TYPE,
+            u.NOTE,
+            u.STATUS,
+            u.COMPANY_ID,
+            u.ENTRY_USER_ID,
+            u.ENTRY_USER_NAME,
+            u.ENTRY_USER_TIME,
+            u.UPDATE_USER_ID,
+            u.UPDATE_USER_NAME,
+            u.UPDATE_USER_TIME,
+            c.COMPANY_NAME
+        FROM
+            sys_user u
+        LEFT JOIN sys_company c ON u.COMPANY_ID = c.COMPANY_ID
+        WHERE
+            1 = 1
+            <if test="ew.userName != null">
+                AND u.USER_NAME like #{ew.userName}
+            </if>
+            <if test="ew.sex != null">
+                AND u.SEX = #{ew.sex}
+            </if>
+            <if test="ew.status != null">
+                AND u.STATUS = #{ew.status}
+            </if>
+    </select>
+</mapper>

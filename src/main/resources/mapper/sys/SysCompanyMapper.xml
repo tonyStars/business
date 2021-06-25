@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysCompanyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysCompany">
+        <id column="COMPANY_ID" property="companyId" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PARENT_NAME" property="parentName" />
+        <result column="COMPANY_CODE" property="companyCode" />
+        <result column="COMPANY_NAME" property="companyName" />
+        <result column="NAME_SHORT" property="nameShort" />
+        <result column="CONTACT_PERSON" property="contactPerson" />
+        <result column="CONTACT_PHONE" property="contactPhone" />
+        <result column="STATE_CODE" property="stateCode" />
+        <result column="STATE_NAME" property="stateName" />
+        <result column="CITY_CODE" property="cityCode" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="COUNTY_CODE" property="countyCode" />
+        <result column="COUNTY_NAME" property="countyName" />
+        <result column="CITY_REGION" property="cityRegion" />
+        <result column="ADDR" property="addr" />
+        <result column="TYPE_CODE" property="typeCode" />
+        <result column="COMPANY_LEVEL" property="companyLevel" />
+        <result column="NOTE" property="note" />
+        <result column="STATUS" property="status" />
+        <result column="ENTRY_USER_ID" property="entryUserId" />
+        <result column="ENTRY_USER_NAME" property="entryUserName" />
+        <result column="ENTRY_USER_TIME" property="entryUserTime" />
+        <result column="UPDATE_USER_ID" property="updateUserId" />
+        <result column="UPDATE_USER_NAME" property="updateUserName" />
+        <result column="UPDATE_USER_TIME" property="updateUserTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        COMPANY_ID, PARENT_ID,PARENT_NAME, COMPANY_CODE, COMPANY_NAME, NAME_SHORT, CONTACT_PERSON, CONTACT_PHONE, STATE_CODE, STATE_NAME, CITY_CODE, CITY_NAME, COUNTY_CODE, COUNTY_NAME, CITY_REGION, ADDR, TYPE_CODE, COMPANY_LEVEL, NOTE, STATUS, ENTRY_USER_ID, ENTRY_USER_NAME, ENTRY_USER_TIME, UPDATE_USER_ID, UPDATE_USER_NAME, UPDATE_USER_TIME
+    </sql>
+
+</mapper>

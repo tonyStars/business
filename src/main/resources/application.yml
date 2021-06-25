@@ -1,0 +1,115 @@
+#项目端口号
+server:
+  port: 8888
+  tomcat:
+    uri-encoding: UTF-8
+
+#mybatis-plus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-value: 0
+      field-strategy: NOT_NULL
+      logic-not-delete-value: 1
+  configuration:
+    map-underscore-to-camel-case: true
+    cacheEnabled: false
+    # 是否将sql打印到控制面板(该配置会将sql语句和查询的结果都打印到控制台)
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+
+#spring
+spring:
+  application:
+    name: business
+  #视图映射
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+#    设置添加后缀请求(如.do)开启
+    pathmatch:
+      use-suffix-pattern: true
+#redis配置
+  redis:
+    host: 192.168.0.82 #Redis服务器地址
+    password: 123456 #链接服务器的密码
+    port: 6379 #端口
+    timeout: 5000 #连接超时时间
+    database: 0 # Redis数据库索引(默认为0)
+    jedis:
+      pool:
+        max-active: 200 #连接池最大连接数(使用负值表示没有限制)
+        max-wait: 5000 #连接池最大阻塞时间(使用负值表示没有限制)
+        max-idle: 20 #连接池中的最大空闲连接
+        min-idle: 2 #连接池中的最小空闲连接
+
+#数据源配置(家)
+#  datasource:
+#    druid:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://127.0.0.1:3306/business_luck?characterEncoding=utf-8&allowMultiQueries=true&noAccessToProcedureBodies=true&serverTimezone=GMT%2B8
+#      username: root
+#      password: 123456
+#      max-active: 200
+#      min-idle: 10
+#      initial-size: 10
+#      max-wait: 60000
+#      validation-query: select 'X'
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: GMT+8
+
+    #数据源配置
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/business?characterEncoding=utf-8&allowMultiQueries=true&noAccessToProcedureBodies=true&serverTimezone=GMT%2B8
+      username: business
+      password: 123456
+      max-active: 200
+      min-idle: 10
+      initial-size: 10
+      max-wait: 60000
+      validation-query: select 'X'
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+#生成接口文档配置
+#swagger:
+#  enabled: true
+#  version: 1.0.0
+#  base-package: com.club.business
+#  base-path: /**
+#  exclude-path: /error
+#  title: 接口说明文档
+#  ui-config:
+#    show-request-headers: false
+#    doc-expansion: list
+#    default-model-rendering: example    #是显示example还是model Tab页，默认example
+#    default-model-expand-depth: 3    #model展开层级
+
+logging:
+  path: ..\logback
+  level:
+    root: info
+#    该配置为mapper接口所在包,如果不直接指向接口所在包,可以直接指向所有包所在的包,可以打印此包下所有的sql语句
+    com:
+      club:
+        business: debug
+
+#netty的配置信息(端口号,webSocket路径)
+webSocket:
+  netty:
+    port: 58080
+    path: /webSocket
+    readerIdleTime: 1 #读空闲超时时间设置(Netty心跳检测配置) - 1分钟
+    writerIdleTime: 1 #写空闲超时时间设置(Netty心跳检测配置)
+    allIdleTime: 1 #读写空闲超时时间设置(Netty心跳检测配置)

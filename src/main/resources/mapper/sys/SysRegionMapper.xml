@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysRegionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysRegion">
+        <id column="REGION_ID" property="regionId" />
+        <result column="NAME" property="name" />
+        <result column="CODE" property="code" />
+        <result column="SORT" property="sort" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PARENT_NAME" property="parentName" />
+        <result column="PINYIN" property="pinyin" />
+        <result column="CITY_REGION" property="cityRegion" />
+        <result column="REGION_TYPE" property="regionType" />
+        <result column="LONGITUDE" property="longitude" />
+        <result column="LATITUDE" property="latitude" />
+        <result column="ISSERVICE" property="isservice" />
+        <result column="STATUS" property="status" />
+        <result column="NOTE" property="note" />
+        <result column="ADD_NAME" property="addName" />
+        <result column="ADD_USER_ID" property="addUserId" />
+        <result column="ADD_USER__TIME" property="addUserTime" />
+        <result column="LAST_UPDATE_NAME" property="lastUpdateName" />
+        <result column="LAST_UPDATE_ID" property="lastUpdateId" />
+        <result column="LAST_UPDATE_TIME" property="lastUpdateTime" />
+        <result column="SYN_TIME" property="synTime" />
+        <result column="SYN_FLAG" property="synFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        REGION_ID, NAME, CODE, SORT, PARENT_ID, PARENT_NAME,PINYIN, CITY_REGION, REGION_TYPE, LONGITUDE, LATITUDE, ISSERVICE, STATUS, NOTE, ADD_NAME, ADD_USER_ID, ADD_USER__TIME, LAST_UPDATE_NAME, LAST_UPDATE_ID, LAST_UPDATE_TIME, SYN_TIME, SYN_FLAG
+    </sql>
+
+</mapper>

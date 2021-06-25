@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.goodluck.dao.BusinessBichromaticSphereMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.goodluck.vo.BusinessBichromaticSphere">
+        <id column="id" property="id" />
+        <result column="issue_number" property="issueNumber" />
+        <result column="opening_time" property="openingTime" />
+        <result column="red_number1" property="redNumber1" />
+        <result column="red_number2" property="redNumber2" />
+        <result column="red_number3" property="redNumber3" />
+        <result column="red_number4" property="redNumber4" />
+        <result column="red_number5" property="redNumber5" />
+        <result column="red_number6" property="redNumber6" />
+        <result column="blue_number7" property="blueNumber7" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, issue_number, opening_time, red_number1, red_number2, red_number3, red_number4, red_number5, red_number6, blue_number7, create_time
+    </sql>
+
+</mapper>

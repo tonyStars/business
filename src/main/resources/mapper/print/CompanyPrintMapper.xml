@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.print.dao.CompanyPrintMapper">
+	<!-- 公司打印打印map -->
+	<resultMap id="companyPrintMap" type="com.club.business.print.vo.CompanyPrintVo">
+        <result column="PARENT_NAME" property="parentName" />
+        <result column="COMPANY_CODE" property="companyCode" />
+        <result column="COMPANY_NAME" property="companyName" />
+        <result column="CONTACT_PERSON" property="contactPerson" />
+        <result column="CONTACT_PHONE" property="contactPhone" />
+        <result column="STATE_NAME" property="stateName" />
+        <result column="CITY_NAME" property="cityName" />
+        <result column="COUNTY_NAME" property="countyName" />
+        <result column="CITY_REGION" property="cityRegion" />
+        <result column="ADDR" property="addr" />
+        <collection property="detailList" javaType="java.util.ArrayList" ofType="com.club.business.print.vo.CompanyItemPrintVo">
+            <result column="BANK_NAME" property="bankName" />
+            <result column="BANK_INFO" property="bankInfo" />
+            <result column="ACCOUNT" property="account" />
+            <result column="ACCOUNT_NAME" property="accountName" />
+            <result column="TAXNO" property="taxno" />
+            <result column="ADDRESS" property="address" />
+            <result column="NOTE" property="note" />
+        </collection>
+	</resultMap>
+
+	<!--付款通知单-->
+	<select id="listCompanyPrintData" resultMap="companyPrintMap">
+        SELECT
+            c1.PARENT_NAME,
+            c1.COMPANY_CODE,
+            c1.COMPANY_NAME,
+            c1.CONTACT_PERSON,
+            c1.CONTACT_PHONE,
+            c1.STATE_NAME,
+            c1.CITY_NAME,
+            c1.COUNTY_NAME,
+            c1.CITY_REGION,
+            c1.ADDR,
+            c2.BANK_NAME,
+            c2.BANK_INFO,
+            c2.ACCOUNT,
+            c2.ACCOUNT_NAME,
+            c2.TAXNO,
+            c2.ADDRESS,
+            c2.NOTE
+        FROM
+            sys_company c1
+        LEFT JOIN sys_company_bank c2 ON c1.COMPANY_ID = c2.COMPANY_ID
+        WHERE
+            c1.STATUS = 0
+            AND c1.COMPANY_ID in
+            <foreach collection="array" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+	</select>
+	
+</mapper>

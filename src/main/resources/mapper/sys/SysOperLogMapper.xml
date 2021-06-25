@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysOperLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysOperLog">
+        <id column="ID" property="id" />
+        <result column="USER_ID" property="userId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_ACCOUNT" property="userAccount" />
+        <result column="MENU_NAME" property="menuName" />
+        <result column="TYPE" property="type" />
+        <result column="TYPE_NAME" property="typeName" />
+        <result column="OPER_TIME" property="operTime" />
+        <result column="OPER_IP" property="operIp" />
+        <result column="STATUS" property="status" />
+        <result column="MEMO" property="memo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        ID, USER_ID, USER_NAME, USER_ACCOUNT, MENU_NAME, TYPE,TYPE_NAME, OPER_TIME, OPER_IP, STATUS, MEMO
+    </sql>
+
+</mapper>

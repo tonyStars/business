@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.business.sys.dao.SysPrivilegeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.club.business.sys.vo.SysPrivilege">
+        <id column="PRIVILEGE_ID" property="privilegeId" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PRIVILEGE_NAME" property="privilegeName" />
+        <result column="PARENT_NAME" property="parentName" />
+        <result column="URL" property="url" />
+        <result column="TP" property="tp" />
+        <result column="GRADE" property="grade" />
+        <result column="CODE" property="code" />
+        <result column="SORT" property="sort" />
+        <result column="STATUS" property="status" />
+        <result column="ICON" property="icon" />
+        <result column="ENTRY_USER_ID" property="entryUserId" />
+        <result column="ENTRY_USER_NAME" property="entryUserName" />
+        <result column="ENTRY_USER_TIME" property="entryUserTime" />
+        <result column="UPDATE_USER_ID" property="updateUserId" />
+        <result column="UPDATE_USER_NAME" property="updateUserName" />
+        <result column="UPDATE_USER_TIME" property="updateUserTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        PRIVILEGE_ID, PARENT_ID, PRIVILEGE_NAME, PARENT_NAME, URL, TP, GRADE, CODE, SORT, STATUS, ICON, ENTRY_USER_ID, ENTRY_USER_NAME, ENTRY_USER_TIME, UPDATE_USER_ID, UPDATE_USER_NAME, UPDATE_USER_TIME
+    </sql>
+
+    <!-- 根据用户所有的角色集合查询功能权限菜单集合 -->
+    <select id="queryPrivilegesByUserId" resultMap="BaseResultMap">
+		SELECT DISTINCT
+            t1.PRIVILEGE_ID,
+            t1.PARENT_ID,
+            t1.PRIVILEGE_NAME,
+            t1.PARENT_NAME,
+            t1.URL,
+            t1.TP,
+            t1.GRADE,
+            t1.CODE,
+            t1.SORT,
+            t1.STATUS,
+            t1.ICON,
+            t1.ENTRY_USER_ID,
+            t1.ENTRY_USER_NAME,
+            t1.ENTRY_USER_TIME,
+            t1.UPDATE_USER_ID,
+            t1.UPDATE_USER_NAME,
+            t1.UPDATE_USER_TIME
+		FROM
+			sys_privilege t1
+		INNER JOIN sys_role_privilege t2 ON t2.privilege_id = t1.privilege_id
+		INNER JOIN sys_user_role t3 ON t3.role_id = t2.role_id
+		INNER JOIN sys_role t4 ON t4.ROLE_ID = t3.ROLE_ID
+		WHERE
+			t3.user_id = #{userId}
+		AND t1.`STATUS` = 0
+		AND t1.TP = 0
+		AND t4.`STATUS` = 0
+		ORDER BY
+			t1.privilege_id ASC
+    </select>
+
+    <!-- 遍历当前账号所有角色获取所有按钮菜单(去除作废角色按钮) -->
+    <select id="queryButtomsByUserId" resultMap="BaseResultMap">
+		SELECT DISTINCT
+			t1.PRIVILEGE_ID,
+            t1.PARENT_ID,
+            t1.PRIVILEGE_NAME,
+            t1.PARENT_NAME,
+            t1.URL,
+            t1.TP,
+            t1.GRADE,
+            t1.CODE,
+            t1.SORT,
+            t1.STATUS,
+            t1.ICON,
+            t1.ENTRY_USER_ID,
+            t1.ENTRY_USER_NAME,
+            t1.ENTRY_USER_TIME,
+            t1.UPDATE_USER_ID,
+            t1.UPDATE_USER_NAME,
+            t1.UPDATE_USER_TIME
+		FROM
+			sys_privilege t1
+		INNER JOIN sys_role_privilege t2 ON t2.privilege_id = t1.privilege_id
+		INNER JOIN sys_user_role t3 ON t3.role_id = t2.role_id
+		INNER JOIN sys_role t4 ON t4.ROLE_ID = t3.ROLE_ID
+		WHERE
+			t3.user_id = #{userId}
+		AND t1.`STATUS` = 0
+		AND t1.TP = 1
+		AND t4.`STATUS` = 0
+		ORDER BY
+			t1.privilege_id ASC
+    </select>
+
+</mapper>

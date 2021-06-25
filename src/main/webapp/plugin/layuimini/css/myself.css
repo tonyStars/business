@@ -1,0 +1,85 @@
+/**原创css样式,剩余修改源码请全局搜索(layui颜色样式修改)*/
+
+/*layui原生button*/
+.layui-btn {
+    background-color: #5c88b1;
+}
+
+/*layui原生黄色警告*/
+.layui-btn-danger {
+    background-color: #ab5f83;
+}
+
+/*layui原生白色按钮*/
+.layui-btn-primary {
+    border: 1px solid #C9C9C9;
+    background-color: #fff;
+    color: #555;
+}
+
+/*layui原生红色警告按钮*/
+.layui-btn-warm {
+    background-color: #b5a887;
+}
+
+/*layui原生百搭按钮*/
+.layui-btn-normal {
+    background-color: #6593b5;
+}
+
+/*layui原生下拉列表选择按钮*/
+.layui-form-select dl dd.layui-this {
+    background-color: #93b0c3;
+    color: #fff;
+}
+
+/*layui分步表单流程图标*/
+.step-item-head.step-item-head-active {
+    background: #5c88b1;
+    color: #ffffff;
+}
+
+/*layui分步表单流程图标*/
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #5c88b1;
+}
+/*layui弹层底色*/
+.layuimini-container {
+    border: 1px solid #fffafa;
+    border-radius: 5px;
+    background-color: #ffffff5c;
+}
+/*table-Select中选择框位置问题*/
+.layui-table-view .layui-form-radio {
+    line-height: 28px;
+    padding: 0;
+}
+/*嵌套于input文本框中的图标样式设置*/
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*树形菜单input框选择按钮*/
+.mir_but{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    background: #f2f2f2;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+/*layuidate日期插件样式颜色,已修改源码*/
+/*.layui-laydate .layui-this {*/
+/*    background-color: #5c88b1!important;*/
+/*    color: #fff!important;*/
+/*}*/
